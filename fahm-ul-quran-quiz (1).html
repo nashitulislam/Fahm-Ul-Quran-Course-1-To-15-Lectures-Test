@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فہم القرآن کورس - جامع ٹیسٹ</title>
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #f7f6f2;
+    --card-bg: #ffffff;
+    --border: #e4e1d6;
+    --text-primary: #25241f;
+    --text-secondary: #6b6a60;
+    --accent: #0e6e54;
+    --accent-dark: #0a4f3c;
+    --accent-light: #e4f4ee;
+    --accent-lighter: #f1faf6;
+    --danger: #b13b1f;
+    --danger-light: #fbeae4;
+    --success: #2f6b14;
+    --success-light: #eaf4dd;
+    --warning: #92590c;
+    --warning-light: #fdf0dc;
+    --shadow-sm: 0 1px 3px rgba(20, 30, 25, 0.06);
+    --shadow-md: 0 4px 16px rgba(20, 30, 25, 0.08);
+    --shadow-lg: 0 8px 30px rgba(20, 30, 25, 0.1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Segoe UI', Tahoma, sans-serif;
+    background: var(--bg); color: var(--text-primary); line-height: 2.1; min-height: 100vh;
+  }
+  .latin { font-family: 'Inter', 'Segoe UI', sans-serif; direction: ltr; }
+  .page { max-width: 760px; margin: 0 auto; padding: 24px 18px 70px; }
+  .hero {
+    background: linear-gradient(180deg, var(--accent-dark) 0%, var(--accent) 100%);
+    border-radius: 20px; padding: 40px 24px 32px; text-align: center; color: white;
+    position: relative; overflow: hidden; box-shadow: var(--shadow-lg);
+    animation: fadeSlideIn 0.6s ease both;
+  }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.06); }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .hero-icon { width: 64px; height: 64px; margin: 0 auto 16px; background: rgba(255,255,255,0.15); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 30px; position: relative; z-index: 1; }
+  .hero h1 { font-size: 30px; font-weight: 700; margin-bottom: 8px; position: relative; z-index: 1; }
+  .hero p { font-size: 15px; opacity: 0.92; position: relative; z-index: 1; }
+  .hero .author { margin-top: 14px; display: inline-block; background: rgba(255,255,255,0.14); padding: 6px 18px; border-radius: 30px; font-size: 13.5px; position: relative; z-index: 1; }
+  @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes popIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+  @keyframes slideInRight { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes ringDraw { from { stroke-dashoffset: 408; } }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .form-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 18px; padding: 24px 22px; margin: 22px 0; box-shadow: var(--shadow-md); animation: fadeSlideIn 0.6s ease 0.1s both; }
+  .form-box h3 { font-size: 18px; color: var(--accent-dark); margin-bottom: 4px; }
+  .form-box .sub { font-size: 13.5px; color: var(--text-secondary); margin-bottom: 18px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 14.5px; font-weight: 700; margin-bottom: 7px; color: var(--text-primary); }
+  .field input { width: 100%; padding: 13px 16px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 16px; font-family: inherit; background: var(--bg); transition: border-color 0.15s ease; direction: ltr; text-align: right; }
+  .field input[type="email"], .field input[type="tel"] { direction: ltr; text-align: left; }
+  .field input:focus { outline: none; border-color: var(--accent); background: white; }
+  .field .err { font-size: 12.5px; color: var(--danger); margin-top: 5px; display: none; }
+  .field.invalid input { border-color: var(--danger); }
+  .field.invalid .err { display: block; }
+  .info-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0; animation: fadeSlideIn 0.6s ease 0.2s both; }
+  .info-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 18px 14px; text-align: center; box-shadow: var(--shadow-sm); }
+  .info-card .icon { font-size: 22px; margin-bottom: 6px; }
+  .info-card .num { font-size: 24px; font-weight: 700; color: var(--accent); font-family: 'Inter', sans-serif; }
+  .info-card .label { font-size: 13.5px; color: var(--text-secondary); margin-top: 3px; }
+  .rules-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; margin: 18px 0; box-shadow: var(--shadow-sm); animation: fadeSlideIn 0.6s ease 0.3s both; }
+  .rules-box h3 { font-size: 17px; color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .rule-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 15px; }
+  .rule-item:last-child { margin-bottom: 0; }
+  .rule-dot { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 13px; margin-top: 2px; }
+  .rule-item.warn .rule-dot { background: var(--warning-light); color: var(--warning); }
+  .rule-item b { color: var(--text-primary); }
+  .start-btn { display: block; width: 100%; padding: 18px; background: var(--accent); color: white; border: none; border-radius: 16px; font-size: 19px; font-weight: 700; cursor: pointer; margin-top: 22px; font-family: inherit; box-shadow: 0 4px 14px rgba(14, 110, 84, 0.3); transition: transform 0.15s ease, box-shadow 0.15s ease; animation: fadeSlideIn 0.6s ease 0.4s both; }
+  .start-btn:active { transform: scale(0.98); box-shadow: 0 2px 8px rgba(14, 110, 84, 0.25); }
+  .start-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .quiz-wrap { animation: fadeIn 0.4s ease; }
+  .timer-bar { position: sticky; top: 10px; z-index: 10; background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 14px 18px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-md); }
+  .timer-left { display: flex; align-items: center; gap: 8px; }
+  .timer-display { font-size: 21px; font-weight: 700; color: var(--accent); font-family: 'Inter', sans-serif; transition: color 0.3s ease; }
+  .timer-display.low { color: var(--danger); animation: pulse 1s infinite; }
+  .progress-text { font-size: 13.5px; color: var(--text-secondary); font-family: 'Inter', sans-serif; }
+  .progress-track { height: 7px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 22px; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-dark)); border-radius: 4px; transition: width 0.3s ease; }
+  .question-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 18px; padding: 24px 22px; margin-bottom: 18px; box-shadow: var(--shadow-md); animation: popIn 0.3s ease; }
+  .q-number { font-size: 13px; color: var(--accent); margin-bottom: 10px; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0.3px; }
+  .q-text { font-size: 20px; margin-bottom: 18px; font-weight: 700; line-height: 2; }
+  .options { display: flex; flex-direction: column; gap: 11px; }
+  .option { border: 1.5px solid var(--border); border-radius: 13px; padding: 14px 16px; font-size: 16.5px; cursor: pointer; background: var(--card-bg); display: flex; align-items: center; gap: 12px; transition: all 0.15s ease; }
+  .option:active { transform: scale(0.99); }
+  .option:hover { border-color: var(--accent); background: var(--accent-lighter); }
+  .option.selected { border-color: var(--accent); background: var(--accent-light); color: var(--accent-dark); font-weight: 600; }
+  .option .circle { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 13px; font-family: 'Inter', sans-serif; transition: all 0.15s ease; }
+  .option.selected .circle { background: var(--accent); border-color: var(--accent); color: white; }
+  .nav-buttons { display: flex; gap: 12px; margin-top: 22px; }
+  .nav-btn { flex: 1; padding: 15px; border-radius: 13px; border: 1.5px solid var(--border); background: var(--card-bg); font-size: 16px; font-weight: 600; cursor: pointer; font-family: inherit; color: var(--text-primary); transition: all 0.15s ease; }
+  .nav-btn:active:not(:disabled) { transform: scale(0.98); }
+  .nav-btn.primary { background: var(--accent); color: white; border-color: var(--accent); }
+  .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  .submit-btn { width: 100%; padding: 17px; background: var(--success); color: white; border: none; border-radius: 14px; font-size: 18px; font-weight: 700; cursor: pointer; margin-top: 12px; font-family: inherit; box-shadow: 0 4px 14px rgba(47, 107, 20, 0.3); transition: transform 0.15s ease; }
+  .submit-btn:active { transform: scale(0.98); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .nav-section-label { font-size: 15px; font-weight: 700; margin: 26px 0 12px; color: var(--text-secondary); }
+  .q-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 7px; margin-bottom: 14px; }
+  .q-dot { aspect-ratio: 1; border-radius: 8px; border: 1.5px solid var(--border); font-size: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: var(--card-bg); color: var(--text-secondary); font-family: 'Inter', sans-serif; font-weight: 600; transition: all 0.15s ease; }
+  .q-dot.answered { background: var(--accent-light); border-color: var(--accent); color: var(--accent-dark); }
+  .q-dot.current { border-color: var(--accent); border-width: 2.5px; transform: scale(1.05); }
+  .result-wrap { animation: fadeIn 0.5s ease; }
+  .result-hero { background: linear-gradient(180deg, var(--accent-dark) 0%, var(--accent) 100%); border-radius: 20px; padding: 36px 24px; text-align: center; color: white; box-shadow: var(--shadow-lg); }
+  .result-hero h2 { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+  .result-hero p { font-size: 14px; opacity: 0.85; }
+  .result-hero .sname { font-size: 16px; opacity: 0.95; margin-top: 6px; font-weight: 600; }
+  .score-ring-wrap { width: 170px; height: 170px; margin: 22px auto 6px; position: relative; }
+  .score-ring-wrap svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .score-ring-bg { fill: none; stroke: rgba(255,255,255,0.18); stroke-width: 12; }
+  .score-ring-fill { fill: none; stroke: white; stroke-width: 12; stroke-linecap: round; stroke-dasharray: 408; animation: ringDraw 1.2s cubic-bezier(0.4, 0, 0.2, 1) both; }
+  .score-ring-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+  .score-ring-text .pct { font-size: 34px; font-weight: 700; font-family: 'Inter', sans-serif; }
+  .score-ring-text .lbl { font-size: 12.5px; opacity: 0.85; margin-top: 2px; }
+  .grade-badge { display: inline-block; background: rgba(255,255,255,0.16); padding: 7px 20px; border-radius: 30px; font-size: 14.5px; font-weight: 600; margin-top: 14px; }
+  .result-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 22px 0; }
+  .stat-box { border-radius: 14px; padding: 18px 8px; text-align: center; border: 1px solid var(--border); animation: popIn 0.4s ease both; }
+  .stat-box:nth-child(1) { animation-delay: 0.05s; }
+  .stat-box:nth-child(2) { animation-delay: 0.15s; }
+  .stat-box:nth-child(3) { animation-delay: 0.25s; }
+  .stat-box.correct { background: var(--success-light); border-color: #d3e6bd; }
+  .stat-box.wrong { background: var(--danger-light); border-color: #f3d2c4; }
+  .stat-box.marks { background: var(--accent-light); border-color: #c8e6da; }
+  .stat-box .icon { font-size: 20px; margin-bottom: 4px; }
+  .stat-box .val { font-size: 24px; font-weight: 700; font-family: 'Inter', sans-serif; }
+  .stat-box.correct .val { color: var(--success); }
+  .stat-box.wrong .val { color: var(--danger); }
+  .stat-box.marks .val { color: var(--accent); }
+  .stat-box .lbl { font-size: 12.5px; color: var(--text-secondary); margin-top: 4px; }
+  .timeout-notice { background: var(--warning-light); color: var(--warning); border-radius: 14px; padding: 14px 16px; font-size: 14.5px; margin: 16px 0; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .sending-notice { background: var(--accent-lighter); color: var(--accent-dark); border-radius: 14px; padding: 14px 16px; font-size: 14.5px; margin: 16px 0; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .spinner { width: 16px; height: 16px; border: 2px solid var(--accent-light); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; }
+  .sent-ok { color: var(--success); }
+  .sent-fail { color: var(--warning); }
+  .retake-btn { width: 100%; padding: 16px; background: var(--card-bg); border: 1.5px solid var(--accent); color: var(--accent); border-radius: 14px; font-size: 16.5px; font-weight: 700; cursor: pointer; margin-top: 8px; font-family: inherit; transition: all 0.15s ease; }
+  .retake-btn:active { transform: scale(0.98); }
+  .review-section { margin-top: 30px; }
+  .review-toggle { width: 100%; padding: 15px; background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 14px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; color: var(--text-primary); display: flex; align-items: center; justify-content: space-between; }
+  .review-list { margin-top: 16px; }
+  .review-item { border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin-bottom: 12px; background: var(--card-bg); animation: slideInRight 0.3s ease both; }
+  .review-item.correct { border-right: 5px solid var(--success); border-radius: 14px 6px 6px 14px; }
+  .review-item.wrong { border-right: 5px solid var(--danger); border-radius: 14px 6px 6px 14px; }
+  .review-item .rq { font-size: 16px; font-weight: 700; margin-bottom: 10px; line-height: 1.9; }
+  .review-item .ra { font-size: 14px; color: var(--text-secondary); margin-top: 4px; display: flex; align-items: center; gap: 6px; }
+  .review-item .ra.user-wrong { color: var(--danger); font-weight: 600; }
+  .review-item .ra.user-correct { color: var(--success); font-weight: 600; }
+  .footer-note { text-align: center; font-size: 13px; color: var(--text-secondary); margin-top: 30px; opacity: 0.8; }
+  .hidden { display: none !important; }
+  .modal-overlay { position: relative; background: rgba(20, 25, 22, 0.5); border-radius: 18px; padding: 30px 20px; display: flex; align-items: center; justify-content: center; min-height: 260px; animation: fadeIn 0.2s ease; }
+  .modal-box { background: var(--card-bg); border-radius: 18px; padding: 26px 22px; max-width: 360px; width: 100%; text-align: center; box-shadow: var(--shadow-lg); animation: popIn 0.25s ease; }
+  .modal-box .micon { font-size: 32px; margin-bottom: 10px; }
+  .modal-box h4 { font-size: 18px; margin-bottom: 8px; }
+  .modal-box p { font-size: 14.5px; color: var(--text-secondary); margin-bottom: 20px; }
+  .modal-buttons { display: flex; gap: 10px; }
+  .modal-buttons button { flex: 1; padding: 12px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; border: 1.5px solid var(--border); background: var(--card-bg); color: var(--text-primary); }
+  .modal-buttons button.primary { background: var(--accent); color: white; border-color: var(--accent); }
+
+</style>
+</head>
+<body>
+<div class="page" id="app"></div>
+
+<script>
+var QUESTIONS = [
+// Taawuz, Tasmia, Surah Fatiha foundations
+{q:"تعوذ (أعوذ باللہ من الشیطان الرجیم) پڑھنے کا مقصد کیا ہے؟", o:["اللہ کی تعریف بیان کرنا","شیطان مردود سے اللہ کی پناہ مانگنا","نماز ختم کرنا","قرآن کا اعلان کرنا"], a:1},
+{q:"تسمیہ (بسم اللہ الرحمن الرحیم) پڑھنے کا کیا فائدہ بیان کیا گیا ہے؟", o:["صرف زبانی ثواب ملتا ہے","ہر کام میں برکت پیدا ہوتی ہے اور شیطان دور رہتا ہے","کوئی خاص فائدہ نہیں","صرف نماز میں پڑھنا کافی ہے"], a:1},
+{q:"سورۃ فاتحہ کو کس لقب سے یاد کیا جاتا ہے؟", o:["ام القرآن (قرآن کی اصل و خلاصہ)","سورۃ الرحمن","سورۃ النور","سورۃ الانعام"], a:0},
+{q:"سورۃ فاتحہ کو دعا کا نمونہ کیوں کہا جاتا ہے؟", o:["اس میں صرف تعریف ہے","اس میں توحید، عبادت اور ہدایت کی دعا شامل ہے","اس میں صرف احکام ہیں","اس میں کوئی دعا نہیں"], a:1},
+{q:"صبح کے وقت تعوذ پڑھنے سے کیا فائدہ بتایا گیا؟", o:["نیند اچھی آتی ہے","دن بھر حفاظت رہتی ہے اور دل پاکیزہ ہوتا ہے","کھانا ہضم ہوتا ہے","کوئی خاص فائدہ نہیں"], a:1},
+
+// Surah Fatiha word-by-word
+{q:"\"الرحمن الرحیم\" اللہ تعالیٰ کی کن دو صفات کو بیان کرتا ہے؟", o:["اللہ کے قادر ہونے کی صفات","نہایت مہربان اور نہایت رحم کرنے والا ہونے کی صفات","اللہ کے خالق ہونے کی صفات","اللہ کے رازق ہونے کی صفات"], a:1},
+{q:"\"مالک یوم الدین\" کا ترجمہ کیا ہے؟", o:["دنیا کا مالک","جزا کے دن (قیامت) کا مالک","رزق کا مالک","علم کا مالک"], a:1},
+{q:"\"إياك نعبد\" یعنی \"ہم تیری ہی عبادت کرتے ہیں\" کا کیا مفہوم لیا گیا؟", o:["ہم تجھ سے مدد مانگتے ہیں","عبادت صرف اللہ کے لیے مخصوص ہے، کسی اور کی نہیں","ہمیں سیدھا راستہ دکھا","تو ہی رب ہے"], a:1},
+{q:"\"إياك نستعین\" کا مطلب ہے؟", o:["ہم تجھ ہی سے مدد مانگتے ہیں","ہم تجھ ہی کی عبادت کرتے ہیں","ہمیں ہدایت دے","ہمیں رزق دے"], a:0},
+{q:"\"اهدنا الصراط المستقیم\" کا مطلب ہے؟", o:["ہمیں رزق دے","ہمیں سیدھا راستہ دکھا","ہماری مغفرت کر","ہمیں علم دے"], a:1},
+{q:"سورۃ فاتحہ کے آخر میں کن دو گروہوں سے بچنے کی دعا مانگی گئی ہے؟", o:["امیروں اور غریبوں سے","جن پر اللہ کا غضب ہوا اور جو گمراہ ہوئے ان سے","پڑوسیوں سے","رشتہ داروں سے"], a:1},
+{q:"سورۃ فاتحہ روزانہ نماز میں تقریباً کتنی مرتبہ دہرائی جاتی ہے؟", o:["تقریباً 100 بار","تقریباً 17 بار (پانچوں نمازوں کی رکعتوں کے حساب سے)","صرف 5 بار","صرف 2 بار"], a:1},
+{q:"\"شیطان رجیم\" میں لفظ \"رجیم\" کا مطلب کیا ہے؟", o:["محترم","مردود/راندہ ہوا (اللہ کی رحمت سے دور کیا گیا)","قریب","دوست"], a:1},
+
+// Tajweed concepts
+{q:"غنہ کس پر آتا ہے؟", o:["الف اور واؤ پر","نون ساکن، تنوین اور میم ساکن پر","ی اور ہ پر","ت اور د پر"], a:1},
+{q:"غنہ کیسے پڑھا جاتا ہے؟", o:["زور سے کھینچ کر","ناک سے آواز نکال کر، دبا کر پڑھنا","بالکل خاموش رہ کر","انتہائی تیز رفتاری سے"], a:1},
+{q:"وقف کرتے وقت آیت یا کلمے کے آخری حرف کی حرکت عموماً کیسی ہو جاتی ہے؟", o:["زبر", "زیر", "پیش", "ساکن"], a:3},
+{q:"وقف کے قاعدے میں تاء مربوطہ (ۃ) کو عموماً کس حرف میں بدلا جاتا ہے؟", o:["میم میں","ہا میں","نون میں","الف میں"], a:1},
+{q:"دو زبروں (تنوین فتح) کو وقف کے وقت کس حرف سے بدلا جاتا ہے؟", o:["واؤ سے","الف سے","یا سے","ہا سے"], a:1},
+{q:"حروف حلقی کہاں سے ادا ہوتے ہیں؟", o:["ہونٹوں سے","ناک سے","حلق (گلے) سے","دانتوں سے"], a:2},
+{q:"اخفاء (Ikhfa) کا لغوی معنی کیا ہے؟", o:["ظاہر کرنا","چھپانا","ملانا","رک جانا"], a:1},
+{q:"تجوید کے قواعد سیکھنے کا بنیادی فائدہ کیا ہے؟", o:["قرآن جلدی ختم ہوتا ہے","الفاظ کی صحیح ادائیگی ہوتی ہے اور معنی میں غلطی سے بچاؤ ہوتا ہے","کوئی خاص فائدہ نہیں","صرف وقت زیادہ لگتا ہے"], a:1},
+{q:"غنہ کا قاعدہ صحیح طریقے سے ادا نہ کرنے سے کیا نقصان ہو سکتا ہے؟", o:["کوئی نقصان نہیں ہوتا","تلفظ بگڑ سکتا ہے اور معنی متاثر ہو سکتا ہے","صرف آواز پست ہو جاتی ہے","پڑھنے کی رفتار بڑھ جاتی ہے"], a:1},
+
+// Arabic grammar basics
+{q:"عربی گرامر میں \"اسم\" کسے کہتے ہیں؟", o:["کام/عمل ظاہر کرنے والا لفظ","نام یا چیز ظاہر کرنے والا لفظ (noun)","ربط پیدا کرنے والا لفظ","صرف سوالیہ لفظ"], a:1},
+{q:"عربی گرامر میں \"فعل\" کسے کہتے ہیں؟", o:["نام ظاہر کرنے والا لفظ","کام یا عمل ظاہر کرنے والا لفظ (verb)","حرف ربط","صرف اسم اشارہ"], a:1},
+{q:"عربی گرامر میں \"حرف\" کس قسم کا لفظ ہوتا ہے؟", o:["مکمل معنی والا لفظ جو خود مکمل ہو","وہ لفظ جس کا مکمل معنی دوسرے لفظ کے بغیر نہ بنے (particle)","صرف فعل کی ایک قسم","صرف اسم کی ایک قسم"], a:1},
+{q:"مونث (feminine) عربی الفاظ کی عموماً کیا پہچان ہوتی ہے؟", o:["آخر میں تاء مربوطہ (ۃ) کا آنا","آخر میں واؤ کا آنا","شروع میں الف کا آنا","کوئی خاص پہچان نہیں"], a:0},
+
+// Surah Al-Asr
+{q:"سورۃ العصر میں کس چیز کو گواہ بنایا گیا ہے؟", o:["چاند کو","زمانے (عصر) کو","ستاروں کو","سورج کو"], a:1},
+{q:"سورۃ العصر کے مطابق نقصان سے بچنے کے لیے کیا تین چیزیں ضروری ہیں؟", o:["صرف ایمان","ایمان، عملِ صالح اور صبر کی تلقین","صرف نماز پڑھنا","صرف زکوٰۃ دینا"], a:1},
+{q:"سورۃ العصر کی مجموعی تعلیم کیا ہے؟", o:["انسان وقت ضائع نہ کرے، ایمان، عمل صالح اور صبر اختیار کرے","صرف نماز کا حکم دینا","صرف زکوٰۃ کا حکم دینا","صرف روزے کا حکم دینا"], a:0},
+
+// Surah An-Nasr
+{q:"سورۃ النصر میں کس چیز کا ذکر ہے؟", o:["صرف صبر کا","اللہ کی فتح اور نصرت کا آنا","صرف رزق کا","صرف نماز کے اوقات کا"], a:1},
+{q:"سورۃ النصر میں اللہ کی مدد اور فتح آنے پر کیا کرنے کا حکم دیا گیا؟", o:["غرور کرنا","اللہ کی تسبیح اور استغفار کرنا","خاموش رہنا","کچھ نہ کرنا"], a:1},
+{q:"درود ابراہیمی نماز کے کس حصے میں پڑھا جاتا ہے؟", o:["صرف عید کی نماز میں","قعدہ (تشہد) کے دوران","صرف جمعہ کے خطبے میں","صرف رمضان میں"], a:1},
+{q:"درود شریف پڑھنے کی کیا فضیلت بیان کی گئی؟", o:["کوئی خاص فضیلت نہیں","نبی کریم ﷺ پر درود بھیجنے کی بہت بڑی فضیلت اور اجر ہے","صرف دنیاوی فائدہ ہوتا ہے","صرف مالی برکت ہوتی ہے"], a:1},
+
+// Surah Al-Ikhlas
+{q:"سورۃ الاخلاص میں بنیادی طور پر کس عقیدے کو بیان کیا گیا ہے؟", o:["نماز کے احکام","اللہ تعالیٰ کی وحدانیت (توحید)","زکوٰۃ کے مسائل","روزے کے احکام"], a:1},
+{q:"سورۃ الاخلاص میں لفظ \"الصمد\" کا مفہوم کیا ہے؟", o:["جو کسی کا محتاج نہ ہو، بے نیاز ذات","جو کمزور ہو","جو غائب ہو","جو محتاج ہو"], a:0},
+{q:"\"لم یلد ولم یولد\" کا کیا مطلب ہے؟", o:["اس نے نہ کسی کو جنا اور نہ وہ کسی سے جنا گیا","اس نے سب کچھ بنایا","وہ ہر جگہ موجود ہے","وہ رازق ہے"], a:0},
+
+// Surah Al-Falaq
+{q:"سورۃ الفلق میں کن چیزوں کے شر سے پناہ مانگی گئی ہے؟", o:["صرف بھوک سے","جادو، حسد اور رات کے اندھیرے کے شر سے","صرف بیماری سے","صرف دشمن کے مالی نقصان سے"], a:1},
+{q:"سورۃ الفلق اور سورۃ الناس کو ملا کر کس نام سے یاد کیا جاتا ہے؟", o:["سورتین رحمت","معوذتین (پناہ مانگنے والی دو سورتیں)","سورتین حمد","سورتین قصص"], a:1},
+
+// Surah Al-Fil
+{q:"سورۃ الفیل میں کس واقعے کا ذکر ہے؟", o:["اصحاب کہف کا واقعہ","اصحاب الفیل (ہاتھی والوں) کا واقعہ، جو خانہ کعبہ کو منہدم کرنے آئے تھے","فرعون کا واقعہ","قومِ ثمود کا واقعہ"], a:1},
+{q:"سورۃ الفیل میں ابابیل پرندوں نے کیا کِیا؟", o:["خوراک پہنچائی","فیل والی فوج پر کنکریاں برسائیں","پانی پلایا","راستہ دکھایا"], a:1},
+{q:"سورۃ الفیل سے بنیادی سبق کیا ملتا ہے؟", o:["اللہ تعالیٰ کی قدرتِ کاملہ کا اظہار","صرف تاریخی معلومات","نماز کا طریقہ","زکوٰۃ کا حساب"], a:0},
+{q:"اصحاب الفیل کی فوج خانہ کعبہ پر حملہ کس مقصد سے لے کر آئی تھی؟", o:["تجارت کے لیے","خانہ کعبہ کو منہدم کرنے کے لیے","حج کرنے کے لیے","صلح کرنے کے لیے"], a:1},
+
+// Practical/spiritual themes throughout the course
+{q:"قرآن کریم کے بنیادی مقاصد میں کیا شامل ہے؟", o:["صرف قصے بیان کرنا","ہدایت، رحمت اور بشارت دینا","صرف تاریخ بتانا","صرف احکام کا مجموعہ ہونا"], a:1},
+{q:"نماز میں خشوع پیدا کرنے کے لیے کیا ضروری بتایا گیا؟", o:["صرف لمبی نماز پڑھنا","پڑھی جانے والی آیات کو سمجھ کر پڑھنا","صرف تیز پڑھنا","کچھ بھی ضروری نہیں"], a:1},
+{q:"دعاؤں کو پڑھنے کے بارے میں کیا نصیحت کی گئی؟", o:["صرف زبانی یاد کرنا کافی ہے","معنی سمجھ کر پڑھنا اور اس پر عمل کرنا ضروری ہے","صرف عربی الفاظ کافی ہیں","دعائیں پڑھنا ضروری نہیں"], a:1},
+{q:"علم حاصل کرنے کے بارے میں کیا تاکید کی گئی؟", o:["علم میں روزانہ اضافہ کرنا چاہیے","علم ایک بار حاصل کر لینا کافی ہے","علم کی کوئی ضرورت نہیں","صرف بچپن میں سیکھنا چاہیے"], a:0},
+{q:"علم و قلم کی اہمیت کے بارے میں کیا بتایا گیا؟", o:["صرف دینی علم ضروری ہے","دینی اور دنیوی دونوں علم اہم ہیں","علم کی کوئی اہمیت نہیں","صرف قلم اہم ہے، علم نہیں"], a:1},
+{q:"شیطانی وسوسوں سے بچاؤ کے لیے کیا تاکید کی گئی؟", o:["تعوذ پڑھنا اور دعاؤں کا اہتمام کرنا","کچھ نہ کرنا","صرف روزہ رکھنا","صرف صدقہ دینا"], a:0},
+{q:"دور حاضر کے فتنوں سے بچنے کے لیے کیا اسلامی حل بتایا گیا؟", o:["دنیا سے کنارہ کشی اختیار کرنا","قرآن و سنت کی روشنی میں عمل کرنا اور دعاؤں کا اہتمام","کوئی خاص حل نہیں","صرف خاموش رہنا"], a:1},
+{q:"وقف کے قواعد کس وقت لاگو ہوتے ہیں؟", o:["جب تلاوت جاری رکھنی ہو","جب آیت یا کلمے پر رکنا ہو","صرف نماز کے دوران","صرف تراویح میں"], a:1},
+{q:"تعوذ اور تسمیہ کس وقت پڑھنا مسنون عمل ہے؟", o:["صرف نماز سے پہلے","ہر اچھے کام اور قرآن کی تلاوت سے پہلے","صرف کھانے سے پہلے","صرف سونے سے پہلے"], a:1},
+{q:"قرآن کو سمجھ کر پڑھنے کا براہ راست کیا فائدہ نماز پر پڑتا ہے؟", o:["نماز میں خشوع و خضوع پیدا ہوتا ہے","کوئی فائدہ نہیں","نماز لمبی ہو جاتی ہے","نماز مشکل ہو جاتی ہے"], a:0},
+{q:"علم حاصل کرنے کے بعد سب سے اہم چیز کیا بتائی گئی؟", o:["صرف یاد رکھنا کافی ہے","علم پر عمل کرنا ضروری ہے","علم بھول جانا کوئی مسئلہ نہیں","کچھ نہ کرنا"], a:1},
+{q:"اس کورس کا حتمی مقصد کیا بیان کیا گیا ہے؟", o:["صرف امتحان پاس کرنا","قرآن کو سمجھنا، نماز درست کرنا اور زندگی میں عمل لانا","صرف سرٹیفکیٹ حاصل کرنا","کوئی خاص مقصد نہیں"], a:1},
+
+// More Fatiha & vocabulary depth
+{q:"الحمد للہ کا ترجمہ کیا ہے؟", o:["تمام تعریفیں اللہ کے لیے ہیں","اللہ بہت بڑا ہے","اللہ ایک ہے","اللہ رازق ہے"], a:0},
+{q:"\"رب العالمین\" کا کیا مطلب ہے؟", o:["تمام جہانوں کا پالنے والا","صرف انسانوں کا رب","صرف فرشتوں کا رب","صرف جانوروں کا رب"], a:0},
+{q:"سورۃ فاتحہ میں اللہ سے کس قسم کی ہدایت مانگی گئی ہے؟", o:["دنیاوی مال کی ہدایت","سیدھے راستے (صراط مستقیم) کی ہدایت","صرف رزق کی ہدایت","صرف اولاد کی ہدایت"], a:1},
+{q:"الصراط المستقیم سے مراد کن لوگوں کا راستہ ہے؟", o:["جن پر اللہ کا غضب ہوا","ان لوگوں کا راستہ جن پر اللہ نے انعام فرمایا","گمراہ لوگوں کا راستہ","کسی خاص قوم کا راستہ"], a:1},
+
+// More tajweed depth
+{q:"نون ساکن اور تنوین کے احکام میں سے ایک حکم \"اظہار\" کیسے ادا کیا جاتا ہے؟", o:["صاف اور واضح طور پر، بغیر غنہ کے","چھپا کر","ملا کر","بالکل خاموش ہو کر"], a:0},
+{q:"تجوید سیکھنے سے قاری کو کیا حاصل ہوتا ہے؟", o:["صرف جلدی پڑھنے کی صلاحیت","قرآن کے الفاظ کی درست اور صحیح ادائیگی","صرف بلند آواز","کوئی خاص چیز نہیں"], a:1},
+{q:"وقف کرتے وقت غلط جگہ رکنے سے کیا ہو سکتا ہے؟", o:["کوئی فرق نہیں پڑتا","معنی میں تبدیلی یا خرابی واقع ہو سکتی ہے","صرف آواز خراب ہوتی ہے","کچھ نہیں ہوتا"], a:1},
+
+// More grammar depth
+{q:"عربی میں جمع (plural) کس لفظ کی قسم کو کہتے ہیں؟", o:["جو ایک چیز کے لیے استعمال ہو","جو دو یا دو سے زیادہ چیزوں کے لیے استعمال ہو","صرف حرف کی قسم","صرف فعل کی قسم"], a:1},
+{q:"اسم، فعل اور حرف—یہ تینوں مل کر عربی زبان میں کیا کہلاتے ہیں؟", o:["قواعد صرف", "اقسامِ کلمہ (کلام کی بنیادی اقسام)", "حروف تہجی", "علم تجوید"], a:1},
+
+// Wrap-up reflective questions
+{q:"کورس میں ہر سبق کے بعد عموماً کس بات پر زور دیا جاتا تھا؟", o:["نئے امتحان پر","سیکھے ہوئے پر عمل اور دہرانے (revision) پر","صرف نوٹس بنانے پر","کچھ بھی نہیں"], a:1},
+{q:"مفتی صاحب کا طرزِ تدریس کیسا بیان کیا گیا؟", o:["سخت اور پیچیدہ","آسان، شفقت بھرا اور نئے طالب علموں کے لیے موزوں","صرف رسمی تقریر","نہایت تیز اور سرسری"], a:1},
+{q:"نماز کو بامقصد اور باشعور بنانے کا بنیادی طریقہ کیا بتایا گیا؟", o:["صرف لمبی نماز پڑھنا","پڑھی جانے والی سورتوں اور دعاؤں کا مفہوم سمجھنا","نماز جلدی ختم کرنا","کچھ بھی نہیں"], a:1},
+
+// Additional depth questions
+{q:"\"ایاک\" کا لفظ سورۃ فاتحہ میں کن دو آیتوں میں دہرایا گیا ہے؟", o:["إياك نعبد اور إياك نستعین میں","الحمد للہ اور رب العالمین میں","مالک یوم الدین اور الرحمن الرحیم میں","اہدنا اور انعمت میں"], a:0},
+{q:"سورۃ الفاتحہ کو نماز کی ہر رکعت میں پڑھنا کس درجے کا حکم ہے؟", o:["مستحب","فرض/لازمی رکن","صرف سنت","مباح، اختیاری"], a:1},
+{q:"سورۃ الاخلاص میں اللہ کی ذات کو کن باطل عقائد سے پاک قرار دیا گیا ہے؟", o:["شرک اور اولاد کے تصور سے","صرف بخل سے","صرف ظلم سے","صرف غفلت سے"], a:0},
+{q:"سورۃ الفلق میں رات کے اندھیرے کے شر سے پناہ مانگنے کی کیا مناسبت ہے؟", o:["رات میں شر و فساد کا غلبہ زیادہ ہوتا ہے","رات میں کوئی خاص بات نہیں","صرف موسم کی وجہ سے","کوئی خاص وجہ نہیں بتائی گئی"], a:0},
+{q:"سورۃ النصر کس موقع پر نازل ہونے کی نشاندہی کرتی ہے؟", o:["فتح مکہ اور اسلام کے غلبے کے موقع پر","ہجرت کے وقت","جنگ بدر کے موقع پر","حجۃ الوداع کے موقع پر"], a:0},
+{q:"درود شریف میں نبی کریم ﷺ کے ساتھ کس کے خاندان کا بھی ذکر آتا ہے؟", o:["حضرت ابراہیم علیہ السلام کے خاندان کا","حضرت موسیٰ علیہ السلام کے خاندان کا","حضرت عیسیٰ علیہ السلام کے خاندان کا","حضرت نوح علیہ السلام کے خاندان کا"], a:0},
+{q:"سورۃ الفیل میں مذکور لشکر کو اللہ تعالیٰ نے کس انداز میں ناکام بنایا؟", o:["زلزلے سے","پرندوں کے ذریعے کنکریاں برسا کر","سیلاب سے","قحط سے"], a:1},
+{q:"اخفاء کے قاعدے میں آواز کو کس طرح ادا کیا جاتا ہے؟", o:["مکمل طور پر ظاہر کرکے","نہ مکمل اظہار نہ مکمل ادغام، بلکہ درمیانی کیفیت میں","بالکل خاموش ہو کر","انتہائی تیز رفتاری سے"], a:1},
+{q:"عربی زبان سیکھنے کا براہ راست کیا فائدہ قرآن فہمی میں ہوتا ہے؟", o:["قرآن کے الفاظ و معانی کو براہ راست سمجھنے میں مدد ملتی ہے","کوئی خاص فائدہ نہیں","صرف امتحان میں کام آتا ہے","صرف نوکری کے لیے مفید ہے"], a:0},
+{q:"اس کورس کے مطابق علم اور عمل کا آپس میں کیا تعلق بتایا گیا؟", o:["دونوں الگ الگ ہیں، ایک دوسرے سے غیر متعلق","علم کا اصل ثمرہ عمل میں ظاہر ہونا چاہیے","صرف علم کافی ہے، عمل ضروری نہیں","صرف عمل کافی ہے، علم ضروری نہیں"], a:1},
+{q:"معوذتین (سورۃ الفلق اور سورۃ الناس) پڑھنے کا بنیادی مقصد کیا ہے؟", o:["دنیاوی شر اور باطنی و ظاہری نقصانات سے اللہ کی پناہ مانگنا","صرف ثواب حاصل کرنا","صرف یاد کرنا","کوئی خاص مقصد نہیں"], a:0},
+{q:"سورۃ الاخلاص کو قرآن کا ایک تہائی (ثلث) کہنے کی کیا وجہ بیان کی جاتی ہے؟", o:["اس کی لمبائی کی وجہ سے","اس میں توحید کا مکمل اور جامع بیان ہونے کی وجہ سے","اس کے الفاظ کی تعداد کی وجہ سے","کوئی خاص وجہ نہیں"], a:1},
+{q:"غنہ، اظہار اور اخفاء—یہ سب کس بڑے موضوع کے ذیلی قواعد ہیں؟", o:["علم تفسیر کے", "علم تجوید (نون ساکن و تنوین کے احکام) کے", "علم فقہ کے", "علم حدیث کے"], a:1},
+{q:"قرآن کریم کو سمجھ کر پڑھنے کا ایک بڑا روحانی فائدہ کیا بتایا گیا؟", o:["دل میں اللہ کی محبت اور خشیت پیدا ہوتی ہے","صرف وقت گزرتا ہے","کوئی خاص فائدہ نہیں","صرف زبان صاف ہوتی ہے"], a:0},
+];
+</script>
+<script>
+
+(function() {
+  var TIME_LIMIT_MIN = 90;
+  var TOTAL_QUESTIONS = Math.min(80, QUESTIONS.length);
+  var quizQuestions = QUESTIONS.slice(0, TOTAL_QUESTIONS);
+  var FORMSUBMIT_EMAIL = "ashfaq.sr1974@gmail.com";
+
+  var state = {
+    screen: 'register',
+    current: 0,
+    answers: new Array(TOTAL_QUESTIONS).fill(null),
+    timeLeft: TIME_LIMIT_MIN * 60,
+    timerInterval: null,
+    autoSubmitted: false,
+    reviewOpen: false,
+    student: { name: '', email: '', whatsapp: '' },
+    emailStatus: 'idle'
+  };
+
+  var app = document.getElementById('app');
+
+  function formatTime(sec) {
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function escapeHtml(str) {
+    var d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  function renderRegister() {
+    app.innerHTML =
+      '<div class="hero">' +
+        '<div class="hero-icon">&#128214;</div>' +
+        '<h1>فہم القرآن کورس</h1>' +
+        '<p>جامع ٹیسٹ - 15 لیکچرز کا خلاصہ</p>' +
+        '<div class="author">Mufti Muhammad Ashfaq Salikabadi &middot; Jamia Rahmani, Karachi</div>' +
+      '</div>' +
+      '<div class="form-box">' +
+        '<h3>اپنی معلومات درج کریں</h3>' +
+        '<div class="sub">ٹیسٹ شروع کرنے سے پہلے براہ کرم نیچے دی گئی معلومات مکمل کریں</div>' +
+        '<div class="field" id="fName"><label>پورا نام</label><input type="text" id="inpName" placeholder="مثال: محمد علی" value="' + escapeHtml(state.student.name) + '"><div class="err">براہ کرم اپنا نام درج کریں</div></div>' +
+        '<div class="field" id="fEmail"><label>ای میل ایڈریس</label><input type="email" id="inpEmail" placeholder="example@email.com" value="' + escapeHtml(state.student.email) + '"><div class="err">براہ کرم درست ای میل درج کریں</div></div>' +
+        '<div class="field" id="fWhatsapp"><label>واٹس ایپ نمبر</label><input type="tel" id="inpWhatsapp" placeholder="03001234567" value="' + escapeHtml(state.student.whatsapp) + '"><div class="err">براہ کرم درست نمبر درج کریں</div></div>' +
+      '</div>' +
+      '<div class="info-strip">' +
+        '<div class="info-card"><div class="icon">&#10068;</div><div class="num latin">' + TOTAL_QUESTIONS + '</div><div class="label">کل سوالات</div></div>' +
+        '<div class="info-card"><div class="icon">&#9201;</div><div class="num latin">' + TIME_LIMIT_MIN + ' منٹ</div><div class="label">وقت کی حد</div></div>' +
+      '</div>' +
+      '<div class="rules-box">' +
+        '<h3>&#128221; ٹیسٹ کا طریقہ کار</h3>' +
+        '<div class="rule-item"><div class="rule-dot">1</div><div>جیسے ہی آپ <b>"ٹیسٹ شروع کریں"</b> پر کلک کریں گے، <b>' + TIME_LIMIT_MIN + ' منٹ کا ٹائمر فوراً شروع</b> ہو جائے گا۔</div></div>' +
+        '<div class="rule-item"><div class="rule-dot">2</div><div>آپ سوالات کے درمیان آگے پیچھے جا سکتے ہیں اور جوابات تبدیل کر سکتے ہیں۔</div></div>' +
+        '<div class="rule-item warn"><div class="rule-dot">!</div><div><b>اگر وقت ختم ہو جائے</b> تو فارم خودکار طور پر جمع ہو جائے گا — جتنے بھی جواب دیے ہوں گے انہی کی بنیاد پر نتیجہ بن جائے گا۔</div></div>' +
+        '<div class="rule-item"><div class="rule-dot">&#10003;</div><div>ٹیسٹ مکمل ہونے پر آپ کو فوری طور پر <b>صحیح/غلط جوابات کی تعداد، فیصد اور کل نمبر</b> دکھائے جائیں گے۔</div></div>' +
+      '</div>' +
+      '<button class="start-btn" id="startBtn">ٹیسٹ شروع کریں &nbsp;&#8592;</button>';
+
+    document.getElementById('startBtn').onclick = handleRegisterSubmit;
+    window.scrollTo(0, 0);
+  }
+
+  function handleRegisterSubmit() {
+    var name = document.getElementById('inpName').value.trim();
+    var email = document.getElementById('inpEmail').value.trim();
+    var whatsapp = document.getElementById('inpWhatsapp').value.trim();
+
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var phonePattern = /^[0-9+\-\s]{7,15}$/;
+
+    var nameOk = name.length >= 2;
+    var emailOk = emailPattern.test(email);
+    var phoneOk = phonePattern.test(whatsapp);
+
+    document.getElementById('fName').classList.toggle('invalid', !nameOk);
+    document.getElementById('fEmail').classList.toggle('invalid', !emailOk);
+    document.getElementById('fWhatsapp').classList.toggle('invalid', !phoneOk);
+
+    if (!nameOk || !emailOk || !phoneOk) return;
+
+    state.student.name = name;
+    state.student.email = email;
+    state.student.whatsapp = whatsapp;
+    startQuiz();
+  }
+
+  function startQuiz() {
+    state.screen = 'quiz';
+    state.timeLeft = TIME_LIMIT_MIN * 60;
+    state.timerInterval = setInterval(tickTimer, 1000);
+    renderQuiz();
+  }
+
+  function tickTimer() {
+    state.timeLeft -= 1;
+    if (state.timeLeft <= 0) {
+      state.timeLeft = 0;
+      state.autoSubmitted = true;
+      clearInterval(state.timerInterval);
+      doSubmit();
+      return;
+    }
+    var timerEl = document.getElementById('timerDisplay');
+    if (timerEl) {
+      timerEl.textContent = formatTime(state.timeLeft);
+      if (state.timeLeft <= 300) timerEl.classList.add('low');
+    }
+  }
+
+  function selectAnswer(qIdx, optIdx) {
+    state.answers[qIdx] = optIdx;
+    renderQuiz();
+  }
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= TOTAL_QUESTIONS) return;
+    state.current = idx;
+    renderQuiz();
+    window.scrollTo(0, 0);
+  }
+
+  function renderQuiz() {
+    var q = quizQuestions[state.current];
+    var answeredCount = state.answers.filter(function(a) { return a !== null; }).length;
+
+    var dotsHtml = '';
+    for (var i = 0; i < TOTAL_QUESTIONS; i++) {
+      var cls = 'q-dot';
+      if (state.answers[i] !== null) cls += ' answered';
+      if (i === state.current) cls += ' current';
+      dotsHtml += '<div class="' + cls + ' latin" data-idx="' + i + '">' + (i + 1) + '</div>';
+    }
+
+    var optsHtml = '';
+    var letters = ['ا', 'ب', 'ج', 'د'];
+    for (var j = 0; j < q.o.length; j++) {
+      var selCls = state.answers[state.current] === j ? ' selected' : '';
+      optsHtml += '<div class="option' + selCls + '" data-opt="' + j + '">' +
+        '<div class="circle">' + letters[j] + '</div>' +
+        '<div>' + q.o[j] + '</div>' +
+      '</div>';
+    }
+
+    app.innerHTML =
+      '<div class="quiz-wrap">' +
+      '<div class="timer-bar">' +
+        '<div class="timer-left"><span>&#9201;</span><div class="timer-display' + (state.timeLeft <= 300 ? ' low' : '') + ' latin" id="timerDisplay">' + formatTime(state.timeLeft) + '</div></div>' +
+        '<div class="progress-text latin">' + answeredCount + ' / ' + TOTAL_QUESTIONS + ' جواب دیے</div>' +
+      '</div>' +
+      '<div class="progress-track"><div class="progress-fill" style="width:' + (((state.current + 1) / TOTAL_QUESTIONS) * 100) + '%"></div></div>' +
+      '<div class="question-card">' +
+        '<div class="q-number latin">سوال ' + (state.current + 1) + ' / ' + TOTAL_QUESTIONS + '</div>' +
+        '<div class="q-text">' + q.q + '</div>' +
+        '<div class="options" id="optionsBox">' + optsHtml + '</div>' +
+      '</div>' +
+      '<div class="nav-buttons">' +
+        '<button class="nav-btn" id="prevBtn" ' + (state.current === 0 ? 'disabled' : '') + '>&#8594; پچھلا</button>' +
+        '<button class="nav-btn primary" id="nextBtn" ' + (state.current === TOTAL_QUESTIONS - 1 ? 'disabled' : '') + '>اگلا &#8592;</button>' +
+      '</div>' +
+      (state.current === TOTAL_QUESTIONS - 1 ? '<button class="submit-btn" id="submitBtn">&#10003; ٹیسٹ جمع کریں</button>' : '') +
+      '<div class="nav-section-label">سوالات کی فہرست</div>' +
+      '<div class="q-grid">' + dotsHtml + '</div>' +
+      '<button class="nav-btn" id="submitBtn2" style="width:100%;">ابھی ٹیسٹ جمع کریں</button>' +
+      '<div id="modalSlot"></div>' +
+      '</div>';
+
+    var optionsBox = document.getElementById('optionsBox');
+    optionsBox.querySelectorAll('.option').forEach(function(el) {
+      el.onclick = function() {
+        selectAnswer(state.current, parseInt(el.getAttribute('data-opt')));
+      };
+    });
+
+    document.getElementById('prevBtn').onclick = function() { goTo(state.current - 1); };
+    document.getElementById('nextBtn').onclick = function() { goTo(state.current + 1); };
+
+    var submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) submitBtn.onclick = confirmSubmit;
+    document.getElementById('submitBtn2').onclick = confirmSubmit;
+
+    app.querySelectorAll('.q-dot').forEach(function(el) {
+      el.onclick = function() { goTo(parseInt(el.getAttribute('data-idx'))); };
+    });
+  }
+
+  function confirmSubmit() {
+    var unanswered = state.answers.filter(function(a) { return a === null; }).length;
+    if (unanswered > 0) {
+      showConfirmModal(unanswered);
+    } else {
+      clearInterval(state.timerInterval);
+      doSubmit();
+    }
+  }
+
+  function showConfirmModal(unanswered) {
+    var slot = document.getElementById('modalSlot');
+    if (!slot) return;
+    slot.innerHTML =
+      '<div class="modal-overlay">' +
+        '<div class="modal-box">' +
+          '<div class="micon">&#9888;</div>' +
+          '<h4>کچھ سوالات باقی ہیں</h4>' +
+          '<p>آپ نے ' + unanswered + ' سوالات کے جواب نہیں دیے۔ کیا آپ پھر بھی ٹیسٹ جمع کرنا چاہتے ہیں؟</p>' +
+          '<div class="modal-buttons">' +
+            '<button id="modalCancel">واپس جائیں</button>' +
+            '<button class="primary" id="modalConfirm">جمع کریں</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    document.getElementById('modalCancel').onclick = function() { slot.innerHTML = ''; };
+    document.getElementById('modalConfirm').onclick = function() {
+      clearInterval(state.timerInterval);
+      doSubmit();
+    };
+    slot.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function doSubmit() {
+    clearInterval(state.timerInterval);
+    state.screen = 'result';
+    state.emailStatus = 'sending';
+    renderResult();
+    window.scrollTo(0, 0);
+    sendResultEmail();
+  }
+
+  function getGrade(pct) {
+    if (pct >= 90) return 'ماشاءاللہ! بہترین کارکردگی';
+    if (pct >= 75) return 'بہت اچھا نتیجہ';
+    if (pct >= 60) return 'اچھا، مزید بہتری ممکن ہے';
+    if (pct >= 40) return 'مزید محنت کی ضرورت ہے';
+    return 'دوبارہ دہرائی کیجیے';
+  }
+
+  function buildResultData() {
+    var correct = 0, wrong = 0, unanswered = 0;
+    var letters = ['ا', 'ب', 'ج', 'د'];
+    var lines = [];
+
+    for (var i = 0; i < TOTAL_QUESTIONS; i++) {
+      var q = quizQuestions[i];
+      var userAns = state.answers[i];
+      var isCorrect = userAns === q.a;
+      if (userAns === null) { unanswered++; }
+      else if (isCorrect) { correct++; }
+      else { wrong++; }
+
+      var userAnsText = userAns === null ? 'جواب نہیں دیا گیا' : (letters[userAns] + ') ' + q.o[userAns]);
+      var correctAnsText = letters[q.a] + ') ' + q.o[q.a];
+      var status = userAns === null ? 'خالی' : (isCorrect ? 'صحیح' : 'غلط');
+
+      lines.push(
+        (i + 1) + '. ' + q.q + '\n' +
+        '   طالبعلم کا جواب: ' + userAnsText + ' [' + status + ']\n' +
+        (!isCorrect ? '   درست جواب: ' + correctAnsText + '\n' : '')
+      );
+    }
+
+    var percentage = Math.round((correct / TOTAL_QUESTIONS) * 100);
+    return { correct: correct, wrong: wrong, unanswered: unanswered, percentage: percentage, lines: lines };
+  }
+
+  function sendResultEmail() {
+    var r = buildResultData();
+    var now = new Date();
+    var dateStr = now.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' });
+
+    var header =
+      'فہم القرآن کورس - ٹیسٹ کا نتیجہ\n' +
+      '================================\n' +
+      'نام: ' + state.student.name + '\n' +
+      'ای میل: ' + state.student.email + '\n' +
+      'واٹس ایپ نمبر: ' + state.student.whatsapp + '\n' +
+      'تاریخ/وقت: ' + dateStr + '\n' +
+      (state.autoSubmitted ? 'نوٹ: وقت ختم ہونے کی وجہ سے خودکار جمع ہوا\n' : '') +
+      '--------------------------------\n' +
+      'کل سوالات: ' + TOTAL_QUESTIONS + '\n' +
+      'صحیح جوابات: ' + r.correct + '\n' +
+      'غلط جوابات: ' + r.wrong + '\n' +
+      'جواب نہ دیے گئے: ' + r.unanswered + '\n' +
+      'فیصد: ' + r.percentage + '%\n' +
+      'کل نمبر: ' + r.correct + '/' + TOTAL_QUESTIONS + '\n' +
+      '================================\n\n' +
+      'تفصیلی جوابات:\n\n';
+
+    var fullMessage = header + r.lines.join('\n');
+
+    var formData = new FormData();
+    formData.append('_subject', 'نیا ٹیسٹ نتیجہ: ' + state.student.name + ' - ' + r.percentage + '%');
+    formData.append('name', state.student.name);
+    formData.append('email', state.student.email);
+    formData.append('whatsapp', state.student.whatsapp);
+    formData.append('score_percentage', r.percentage + '%');
+    formData.append('correct_answers', String(r.correct));
+    formData.append('wrong_answers', String(r.wrong));
+    formData.append('unanswered', String(r.unanswered));
+    formData.append('total_questions', String(TOTAL_QUESTIONS));
+    formData.append('detailed_results', fullMessage);
+    formData.append('_template', 'box');
+    formData.append('_captcha', 'false');
+
+    fetch('https://formsubmit.co/ajax/' + FORMSUBMIT_EMAIL, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: formData
+    }).then(function(res) {
+      return res.json();
+    }).then(function(data) {
+      state.emailStatus = 'sent';
+      updateEmailStatusUI();
+    }).catch(function(err) {
+      state.emailStatus = 'failed';
+      updateEmailStatusUI();
+    });
+  }
+
+  function updateEmailStatusUI() {
+    var slot = document.getElementById('emailStatusSlot');
+    if (!slot) return;
+    if (state.emailStatus === 'sent') {
+      slot.innerHTML = '<div class="sending-notice sent-ok"><span>&#10003;</span> نتیجہ کامیابی سے بھیج دیا گیا</div>';
+    } else if (state.emailStatus === 'failed') {
+      slot.innerHTML = '<div class="sending-notice sent-fail"><span>&#9888;</span> نتیجہ بھیجنے میں مسئلہ ہوا، براہ کرم اسکرین شاٹ محفوظ کر لیں</div>';
+    }
+  }
+
+  function renderResult() {
+    var r = buildResultData();
+    var reviewHtml = '';
+    var letters = ['ا', 'ب', 'ج', 'د'];
+
+    for (var i = 0; i < TOTAL_QUESTIONS; i++) {
+      var q = quizQuestions[i];
+      var userAns = state.answers[i];
+      var isCorrect = userAns === q.a;
+      var itemCls = userAns === null ? '' : (isCorrect ? 'correct' : 'wrong');
+      var userAnsText = userAns === null ? 'جواب نہیں دیا گیا' : letters[userAns] + ') ' + q.o[userAns];
+      var correctAnsText = letters[q.a] + ') ' + q.o[q.a];
+
+      reviewHtml += '<div class="review-item ' + itemCls + '">' +
+        '<div class="rq">' + (i + 1) + '. ' + q.q + '</div>' +
+        '<div class="ra ' + (userAns === null ? '' : (isCorrect ? 'user-correct' : 'user-wrong')) + '">' + (userAns === null ? '&#8226;' : (isCorrect ? '&#10003;' : '&#10007;')) + ' آپ کا جواب: ' + userAnsText + '</div>' +
+        (!isCorrect ? '<div class="ra user-correct">&#10003; درست جواب: ' + correctAnsText + '</div>' : '') +
+      '</div>';
+    }
+
+    var circumference = 408;
+    var dashOffset = circumference - (circumference * r.percentage / 100);
+
+    var emailStatusHtml = '';
+    if (state.emailStatus === 'sending') {
+      emailStatusHtml = '<div class="sending-notice"><div class="spinner"></div> نتیجہ بھیجا جا رہا ہے...</div>';
+    } else if (state.emailStatus === 'sent') {
+      emailStatusHtml = '<div class="sending-notice sent-ok"><span>&#10003;</span> نتیجہ کامیابی سے بھیج دیا گیا</div>';
+    } else if (state.emailStatus === 'failed') {
+      emailStatusHtml = '<div class="sending-notice sent-fail"><span>&#9888;</span> نتیجہ بھیجنے میں مسئلہ ہوا، براہ کرم اسکرین شاٹ محفوظ کر لیں</div>';
+    }
+
+    app.innerHTML =
+      '<div class="result-wrap">' +
+      '<div class="result-hero">' +
+        '<h2>آپ کا نتیجہ تیار ہے</h2>' +
+        '<p>فہم القرآن کورس - جامع ٹیسٹ</p>' +
+        '<div class="sname">' + escapeHtml(state.student.name) + '</div>' +
+        '<div class="score-ring-wrap">' +
+          '<svg viewBox="0 0 144 144">' +
+            '<circle class="score-ring-bg" cx="72" cy="72" r="65"></circle>' +
+            '<circle class="score-ring-fill" cx="72" cy="72" r="65" style="stroke-dashoffset:' + dashOffset + '"></circle>' +
+          '</svg>' +
+          '<div class="score-ring-text"><div class="pct latin">' + r.percentage + '%</div><div class="lbl">حاصل کردہ فیصد</div></div>' +
+        '</div>' +
+        '<div class="grade-badge">' + getGrade(r.percentage) + '</div>' +
+      '</div>' +
+      '<div id="emailStatusSlot">' + emailStatusHtml + '</div>' +
+      '<div class="result-stats">' +
+        '<div class="stat-box correct"><div class="icon">&#10003;</div><div class="val latin">' + r.correct + '</div><div class="lbl">صحیح جوابات</div></div>' +
+        '<div class="stat-box wrong"><div class="icon">&#10007;</div><div class="val latin">' + r.wrong + '</div><div class="lbl">غلط جوابات</div></div>' +
+        '<div class="stat-box marks"><div class="icon">&#127942;</div><div class="val latin">' + r.correct + '/' + TOTAL_QUESTIONS + '</div><div class="lbl">کل نمبر</div></div>' +
+      '</div>' +
+      (state.autoSubmitted ? '<div class="timeout-notice"><span>&#9201;</span> وقت ختم ہونے کی وجہ سے فارم خودکار جمع ہوا</div>' : '') +
+      (r.unanswered > 0 && !state.autoSubmitted ? '<div class="timeout-notice">' + r.unanswered + ' سوالات کے جواب نہیں دیے گئے</div>' : '') +
+      '<button class="retake-btn" id="retakeBtn">&#8635; دوبارہ ٹیسٹ دیں</button>' +
+      '<div class="review-section">' +
+        '<button class="review-toggle" id="reviewToggle"><span>تفصیلی جائزہ دیکھیں</span><span id="reviewArrow">&#8595;</span></button>' +
+        '<div class="review-list hidden" id="reviewList">' + reviewHtml + '</div>' +
+      '</div>' +
+      '<div class="footer-note">فہم القرآن کورس &middot; Mufti Muhammad Ashfaq Salikabadi &middot; Jamia Rahmani, Karachi</div>' +
+      '</div>';
+
+    document.getElementById('retakeBtn').onclick = function() {
+      state.current = 0;
+      state.answers = new Array(TOTAL_QUESTIONS).fill(null);
+      state.timeLeft = TIME_LIMIT_MIN * 60;
+      state.autoSubmitted = false;
+      state.emailStatus = 'idle';
+      state.screen = 'register';
+      renderRegister();
+    };
+
+    document.getElementById('reviewToggle').onclick = function() {
+      var list = document.getElementById('reviewList');
+      var arrow = document.getElementById('reviewArrow');
+      state.reviewOpen = !state.reviewOpen;
+      if (state.reviewOpen) {
+        list.classList.remove('hidden');
+        arrow.innerHTML = '&#8593;';
+      } else {
+        list.classList.add('hidden');
+        arrow.innerHTML = '&#8595;';
+      }
+    };
+  }
+
+  renderRegister();
+})();
+
+</script>
+</body>
+</html>
